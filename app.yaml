@@ -1,7 +1,9 @@
-name: app-with-predeploy-job
+name: app-with-job
 region: nyc
+
+# 1. Web Service Component
 services:
-  - name: web-service
+  - name: app-with-job         # Component 1 (Web Service)
     github:
       repo: Ajaykumar250/app_with_joob
       branch: main
@@ -16,9 +18,10 @@ services:
       - key: NODE_ENV
         value: production
 
+# 2. Separate Job Component
 jobs:
-  - name: predeploy-migration
-    kind: PRE_DEPLOY
+  - name: database-migration-job # Component 2 (Job)
+    kind: PRE_DEPLOY             # PRE_DEPLOY makes it run before the web service updates
     github:
       repo: Ajaykumar250/app_with_joob
       branch: main
