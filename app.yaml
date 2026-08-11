@@ -1,0 +1,34 @@
+name: sample-app-with-predeploy
+region: nyc
+services:
+  - name: web-app
+    github:
+      repo: your-github-username/your-repo-name
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    environment_slug: node-js  # Change based on your stack (e.g., python, go, docker)
+    build_command: npm run build
+    run_command: npm start
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    envs:
+      - key: NODE_ENV
+        value: production
+
+jobs:
+  - name: db-migration-job
+    kind: PRE_DEPLOY
+    github:
+      repo: your-github-username/your-repo-name
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    environment_slug: node-js
+    run_command: npm run db:migrate
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    envs:
+      - key: NODE_ENV
+        value: production
