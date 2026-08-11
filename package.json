@@ -1,0 +1,13 @@
+{
+  "name": "app-with-job",
+  "version": "1.0.0",
+  "description": "Sample app with pre-deploy job for DigitalOcean App Platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "migrate": "echo '==> Running pre-deploy migration job...' && sleep 2 && echo '==> Migration completed successfully!'"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
