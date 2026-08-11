@@ -3,7 +3,7 @@ region: nyc
 services:
   - name: web-app
     github:
-      repo: your-github-username/your-repo-name
+      repo: Ajaykumar250/app_with_job
       branch: main
       deploy_on_push: true
     source_dir: /
@@ -21,7 +21,7 @@ jobs:
   - name: db-migration-job
     kind: PRE_DEPLOY
     github:
-      repo: your-github-username/your-repo-name
+      repo: Ajaykumar250/app_with_job
       branch: main
       deploy_on_push: true
     source_dir: /
